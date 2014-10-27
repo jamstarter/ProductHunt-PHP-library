@@ -44,7 +44,7 @@ class ProductHunt
     /**
     * Retrieve posts for a given day
     */
-    public function getPostsByDay($date){
+    public function getPostsByDay($date='today'){
         $endpoint = "/v1/posts";
         $params['day'] = date('Y-m-d',strtotime($date));
         return $this->get($endpoint,$params);
@@ -54,7 +54,7 @@ class ProductHunt
     * Retrieve posts for a given day
     * @array $params [search,older,newer,per_page]
     */
-    public function getNewestPosts($params){
+    public function getNewestPosts($params=array()){
         $endpoint = "/v1/posts/all";
         return $this->get($endpoint,$params);
     }
@@ -64,7 +64,7 @@ class ProductHunt
     * @array $params [older,newer,per_page,order]
     * @int $id Id of Post
     */
-    public function getPostVotes($id,$params){
+    public function getPostVotes($id,$params=array()){
         $endpoint = "/v1/posts/$id/votes";
         return $this->get($endpoint,$params);
     }
@@ -75,7 +75,7 @@ class ProductHunt
     * @array $params [older,newer,per_page,order]
     * @int $id Id of User
     */
-    public function getPostComments($id,$params){
+    public function getPostComments($id,$params=array()){
         $endpoint = "/v1/posts/$id/comments";
         return $this->get($endpoint,$params);
     }
@@ -95,7 +95,7 @@ class ProductHunt
     * @array $params [older,newer,per_page,order]
     * @int $id Id of User
     */
-    public function getUserVotes($id,$params){
+    public function getUserVotes($id,$params=array()){
         $endpoint = "/v1/users/$id/votes";
         return $this->get($endpoint,$params);
     }
@@ -106,7 +106,7 @@ class ProductHunt
     * @array $params [older,newer,per_page,order]
     * @int $id Id of User
     */
-    public function getUserComments($id,$params){
+    public function getUserComments($id,$params=array()){
         $endpoint = "/v1/users/$id/comments";
         return $this->get($endpoint,$params);
     }
@@ -116,7 +116,7 @@ class ProductHunt
     * Retrieve user records
     * @array $params [older,newer,per_page,order]
     */
-    public function getUsers($params){
+    public function getUsers($params=array()){
         $endpoint = "/v1/users";
         return $this->get($endpoint,$params);
     }
